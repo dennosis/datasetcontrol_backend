@@ -21,8 +21,6 @@
     "shortid": "^2.2.15"
   },
   "devDependencies": {
-    "jest": "^26.1.0",
-    "node-dev": "^4.3.0",
-    "supertest": "^4.0.2"
+    "node-dev": "^4.3.0"
   }
 }

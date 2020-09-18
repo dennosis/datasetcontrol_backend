@@ -1,104 +1,24 @@
 {
-  "User": [
+  "Plain": [
     {
-      "id": "xJRSGMPZU",
-      "name": "Joao",
-      "favoriteRestaurantId": "y5Vi1KJjB"
+      "id": "9r5FKRzGM",
+      "spaces": {
+        "bart": {
+          "area": 2000
+        }
+      },
+      "height": 300,
+      "width": 2000
     },
     {
-      "id": "DM29RfvsD",
-      "name": "Maria"
-    },
-    {
-      "id": "RY7QV20mB",
-      "name": "Jose",
-      "favoriteRestaurantId": "9Crx0fKP9M"
-    },
-    {
-      "id": "IQpvMbHuo",
-      "name": "Nestor"
-    },
-    {
-      "id": "1cbmb6CpV",
-      "name": "Pedro",
-      "favoriteRestaurantId": "9Crx0fKP9M"
-    },
-    {
-      "id": "ofgRM3NLf",
-      "name": "Dennis",
-      "favoriteRestaurantId": "3MwxVwC_i"
-    },
-    {
-      "id": "xv4ucwhuk",
-      "name": "beltrano",
-      "favoriteRestaurantId": "3MwxVwC_i"
-    }
-  ],
-  "Restaurant": [
-    {
-      "id": "9Crx0fK79M",
-      "name": "Barzinho"
-    },
-    {
-      "id": "y5Vi1KJjB",
-      "name": "Mc Donalds"
-    },
-    {
-      "id": "9Crx0fKP9M",
-      "name": "Kfc"
-    },
-    {
-      "id": "3MwxVwC_i",
-      "name": "restaurantTeste"
-    },
-    {
-      "id": "GNPCnzc5F",
-      "name": "mCdonaldsTeste",
-      "location": "https://www.mcdonalds.com.br/"
-    }
-  ],
-  "Vote": [
-    {
-      "id": "YVDBHHXAc",
-      "userId": "vbSW55MM-",
-      "restaurantId": "9Crx0fKP9M",
-      "date": "7/5/2020"
-    },
-    {
-      "id": "kJesrBzbx",
-      "userId": "IQpvMbHuo",
-      "restaurantId": "y5Vi1KJjB",
-      "date": "7/5/2020"
-    },
-    {
-      "id": "X054owqBI",
-      "userId": "74D_jfcDh",
-      "restaurantId": "9Crx0fKP9M",
-      "date": "7/5/2020"
-    },
-    {
-      "id": "lsKX4dQjP",
-      "userId": "IQpvMbHuo",
-      "restaurantId": "9Crx0fKP9M",
-      "date": "7/5/2020"
-    },
-    {
-      "id": "6a_vnTWzg",
-      "userId": "RY7QV20mB",
-      "restaurantId": "9Crx0fKP9M",
-      "date": "7/5/2020"
-    },
-    {
-      "id": "Jb9R4RZtJ",
-      "userId": "ofgRM3NLf",
-      "restaurantId": "9Crx0fKP9M",
-      "date": "7/5/2020"
-    },
-    {
-      "id": "IuvDCVoOb",
-      "userId": "ofgRM3NLf",
-      "restaurantId": "pSHyyevJv",
-      "date": "9/5/2020"
+      "id": 45,
+      "spaces": {
+        "bart": {
+          "area": 2000
+        }
+      },
+      "height": 300,
+      "width": 2000
     }
   ]
 }

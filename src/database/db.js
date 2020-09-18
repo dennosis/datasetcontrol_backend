@@ -6,9 +6,7 @@ const db = low(adapter)
  
 // Set some defaults
 db.defaults({ 
-    Restaurant: [], 
-    User: [],
-    Vote:[]
+    Plain:[]
 }).write()
 
 module.exports = db

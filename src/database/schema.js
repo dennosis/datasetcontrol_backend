@@ -31,9 +31,7 @@ class Schema {
             }else{
                 return {}
             }
-     
         }
-        
     }
 
     static remove(obj){
@@ -47,12 +45,19 @@ class Schema {
     }
     async save(){
         const model = this.constructor.name
-        if(this.id !== undefined){
-            await db
-                .get(model)
-                .find({ id: this.id })
-                .assign({...this})
-                .write()
+        if(this.id){
+            const find = db.get(model).find({ id: this.id })
+            if(find.value()){
+                await find
+                    .assign({...this})
+                    .write()
+            }else{
+                await db
+                    .get(model)
+                    .push({ ...this})
+                    .write()
+            }
+
         }else{
             this.id = await shortid.generate()
             await db
