@@ -15,9 +15,9 @@ module.exports = {
     },
     create : async (req, res) => {
         try {
-            const {id, spaces, height, width} = req.body
+            const {id, spaces, path, height, width} = req.body
             
-            const plain = await new Plain({id, spaces, height, width })
+            const plain = await new Plain({id, spaces, path, height, width })
 
             await plain.save()
             
@@ -40,11 +40,12 @@ module.exports = {
     update: async (req, res) => {
         try {
 
-            const {id, spaces, height, width } = req.body
+            const {id, spaces, path, height, width } = req.body
 
             const plain = await Plain.findOne({"id":id})
-            
+
             plain.spaces=spaces
+            plain.path=path
             plain.height=height
             plain.width=width
 
