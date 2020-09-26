@@ -1,24 +1,3 @@
 {
-  "Plain": [
-    {
-      "id": "9r5FKRzGM",
-      "spaces": {
-        "bart": {
-          "area": 2000
-        }
-      },
-      "height": 300,
-      "width": 2000
-    },
-    {
-      "id": 45,
-      "spaces": {
-        "bart": {
-          "area": 2000
-        }
-      },
-      "height": 300,
-      "width": 2000
-    }
-  ]
+  "Plain": []
 }
