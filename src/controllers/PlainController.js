@@ -15,9 +15,9 @@ module.exports = {
     },
     create : async (req, res) => {
         try {
-            const {id, spaces, path, height, width} = req.body
+            const {id, spaces, path, height, width, height_px, width_px, imgHeight_px, imgWidth_px, imgX_px, imgY_px} = req.body
             
-            const plain = await new Plain({id, spaces, path, height, width })
+            const plain = await new Plain({id, spaces, path, height, width, height_px, width_px, imgHeight_px, imgWidth_px, imgX_px, imgY_px })
 
             await plain.save()
             
