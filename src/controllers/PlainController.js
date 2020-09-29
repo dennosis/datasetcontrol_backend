@@ -16,11 +16,11 @@ const Plain = require('../models/Plain');
     }
     const create = async (req, res) => {
         try {
-            
-           const {_id} = await Plain.findOne({name:req.body.name }).select({"_id": 1})
 
-            if(_id){
-                req.body._id = _id
+           const plainFind = await Plain.findOne({name:req.body.name }).select({"_id": 1})
+            
+            if(plainFind){
+                req.body._id = plainFind._id
                 return update(req, res)
             }
 
