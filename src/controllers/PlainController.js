@@ -1,9 +1,8 @@
 const Plain = require('../models/Plain');
 
 
-module.exports = {
 
-    index: async (req, res) => {
+    const index = async (req, res) => {
         try {
             if(req.query){
                 res.json(await Plain.find({...req.query}).select({ "name": 1, "_id": 1}))
@@ -14,9 +13,17 @@ module.exports = {
             console.log(error)
             res.status(500).json({message: "Error find Plains", error: error});
         }
-    },
-    create : async (req, res) => {
+    }
+    const create = async (req, res) => {
         try {
+            
+           const {_id} = await Plain.findOne({name:req.body.name }).select({"_id": 1})
+
+            if(_id){
+                req.body._id = _id
+                return update(req, res)
+            }
+
             const {
                 name, 
                 spaces, 
@@ -52,8 +59,8 @@ module.exports = {
             console.log(error)
             res.status(500).json({message: "Error create Plain", error: error});
         }
-    },
-    show : async (req, res) => {
+    }
+    const show = async (req, res) => {
         try {
             const {id} = req.params
             const plain = await Plain.findById(id)
@@ -63,12 +70,13 @@ module.exports = {
             console.log(error)
             res.status(500).json({message: "Error find Plain", error: error});
         }
-    },
-    update: async (req, res) => {
+    }
+    const update =  async (req, res) => {
         try {
 
             const {
                 _id, 
+                name,
                 spaces, 
                 path, 
                 height, 
@@ -84,6 +92,7 @@ module.exports = {
 
             const plain = await Plain.findById(_id)
 
+            if(name)        plain.name=name
             if(spaces)      plain.spaces=spaces
             if(path)        plain.path=path
             if(height)      plain.height=height
@@ -102,8 +111,9 @@ module.exports = {
             console.log(error)
             res.status(500).json({message: "Error update Plain", error: error});
         }
-    },
-    delete:async (req, res) => {
+    }
+    /*
+    const delete = async (req, res) => {
         try {
             const {id} = req.params
             res.json(Plain.remove({"id":id}))
@@ -112,7 +122,11 @@ module.exports = {
             res.status(500).json({message: "Error remove Plain", error: error});
         }
     }
+    */
 
-
-
+module.exports = {
+    index,
+    create,
+    show,
+    update
 }

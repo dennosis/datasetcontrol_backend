@@ -8,6 +8,6 @@ router.get('/plain', Plain.index);
 router.get('/plain/:id', Plain.show);
 router.post('/plain', Plain.create);
 router.put('/plain', Plain.update);
-router.delete('/plain/:id', Plain.delete);
+//router.delete('/plain/:id', Plain.delete);
 
 module.exports = router;
