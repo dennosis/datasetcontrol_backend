@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 let PlainSchema = new Schema({
     name:{
         type: String, 
-        required: true
+        required: true,
+        unique: true
     },
     path: {
         type: String, 
@@ -54,6 +55,10 @@ let PlainSchema = new Schema({
             },
             name: {
                 type: String, 
+                required: true
+            },
+            index: {
+                type: Number, 
                 required: true
             },
             width: {
