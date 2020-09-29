@@ -9,7 +9,8 @@ const mongoose = require('mongoose');
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '10mb', extended: true}))
+app.use(bodyParser.urlencoded({limit: '10mb', extended: true}))
 app.use(routes)
 
 mongoose.connect(process.env.MONGO_URL, {
