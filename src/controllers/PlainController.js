@@ -1,57 +1,105 @@
 const Plain = require('../models/Plain');
 
+
 module.exports = {
 
     index: async (req, res) => {
         try {
             if(req.query){
-                res.json(Plain.find({...req.query}))
+                res.json(await Plain.find({...req.query}).select({ "name": 1, "_id": 1}))
             }else{
-                res.json(Plain.find())
+                res.json(await Plain.find().select({ "name": 1, "_id": 1}))
             }
         } catch (error) {
+            console.log(error)
             res.status(500).json({message: "Error find Plains", error: error});
         }
     },
     create : async (req, res) => {
         try {
-            const {id, spaces, path, height, width, height_px, width_px, imgHeight_px, imgWidth_px, imgX_px, imgY_px} = req.body
+            const {
+                name, 
+                spaces, 
+                path, 
+                height, 
+                width, 
+                height_px, 
+                width_px, 
+                imgHeight_px, 
+                imgWidth_px, 
+                imgX_px, 
+                imgY_px,
+                svg
+            } = req.body
             
-            const plain = await new Plain({id, spaces, path, height, width, height_px, width_px, imgHeight_px, imgWidth_px, imgX_px, imgY_px })
-
-            await plain.save()
-            
+            const plain = await Plain.create({
+                name,
+                spaces, 
+                path, 
+                height, 
+                width, 
+                height_px, 
+                width_px, 
+                imgHeight_px, 
+                imgWidth_px,
+                imgX_px, 
+                imgY_px,
+                svg
+            })            
             return res.json(plain)
 
         } catch (error) {
+            console.log(error)
             res.status(500).json({message: "Error create Plain", error: error});
         }
     },
     show : async (req, res) => {
         try {
             const {id} = req.params
-            const plain = await Plain.findOne({"id":`${id}`})
+            const plain = await Plain.findById(id)
             return res.json(plain)
 
         } catch (error) {
+            console.log(error)
             res.status(500).json({message: "Error find Plain", error: error});
         }
     },
     update: async (req, res) => {
         try {
 
-            const {id, spaces, path, height, width } = req.body
+            const {
+                _id, 
+                spaces, 
+                path, 
+                height, 
+                width,
+                height_px, 
+                width_px, 
+                imgHeight_px, 
+                imgWidth_px,
+                imgX_px, 
+                imgY_px,
+                svg
+            } = req.body
 
-            const plain = await Plain.findOne({"id":id})
+            const plain = await Plain.findById(_id)
 
-            plain.spaces=spaces
-            plain.path=path
-            plain.height=height
-            plain.width=width
+            if(spaces)      plain.spaces=spaces
+            if(path)        plain.path=path
+            if(height)      plain.height=height
+            if(width)       plain.width=width
+            if(height_px)   plain.height_px=height_px 
+            if(width_px)    plain.width_px=width_px 
+            if(imgHeight_px)plain.imgHeight_px=imgHeight_px 
+            if(imgWidth_px) plain.imgWidth_px=imgWidth_px
+            if(imgX_px)     plain.imgX_px=imgX_px 
+            if(imgY_px)     plain.imgY_px=imgY_px
+            if(svg)         plain.svg=svg
 
             await plain.save()
             res.json(plain)
         } catch (error) {
+            console.log(error)
             res.status(500).json({message: "Error update Plain", error: error});
         }
     },
@@ -60,6 +108,7 @@ module.exports = {
             const {id} = req.params
             res.json(Plain.remove({"id":id}))
         } catch (error) {
+            console.log(error)
             res.status(500).json({message: "Error remove Plain", error: error});
         }
     }

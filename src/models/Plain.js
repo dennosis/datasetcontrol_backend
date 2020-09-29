@@ -1,21 +1,91 @@
-const schema  = require('../database/schema')
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-class Plain extends schema {
-    constructor(obj) {
-        super()
-        this.id = obj.id
-        this.path = obj.path
-        this.spaces = obj.spaces
-        this.height = obj.height
-        this.width = obj.width 
-        this.height_px = obj.height_px
-        this.width_px = obj.width_px
-        this.imgHeight_px = obj.imgHeight_px
-        this.imgWidth_px = obj.imgWidth_px
-        this.imgX_px = obj.imgX_px
-        this.imgY_px = obj.imgY_px
-    }
-}
+let PlainSchema = new Schema({
+    name:{
+        type: String, 
+        required: true
+    },
+    path: {
+        type: String, 
+        required: true
+    },
+    width: {
+        type: Number, 
+        required: true
+    },
+    height: {
+        type: Number, 
+        required: true
+    },
+    width_px: {
+        type: Number, 
+        required: true
+    },
+    height_px: {
+        type: Number, 
+        required: true
+    },
+    imgWidth_px: {
+        type: Number, 
+        required: true
+    },
+    imgHeight_px: {
+        type: Number, 
+        required: true
+    },
+    imgX_px: {
+        type: Number, 
+        required: true
+    },
+    imgX_px: {
+        type: Number, 
+        required: true
+    },
+    svg: {
+        type: String, 
+        required: true
+    },
+    spaces : [
+        {
+            class: {
+                type: String, 
+                required: true
+            },
+            name: {
+                type: String, 
+                required: true
+            },
+            width: {
+                type: Number, 
+                required: true
+            },
+            height: {
+                type: Number, 
+                required: true
+            },
+            rcx: {
+                type: Number, 
+                required: true
+            },
+            rcy: {
+                type: Number, 
+                required: true
+            },
+            horizontally: {
+                type: String, 
+                required: true
+            },
+            vertically: {
+                type: String, 
+                required: true
+            },
+            area: {
+                type: Number, 
+                required: true
+            }
+        }
+    ]
+});
 
-module.exports = Plain
-
+module.exports = mongoose.model('Plain', PlainSchema);
