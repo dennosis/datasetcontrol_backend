@@ -25,7 +25,8 @@ const Plain = require('../models/Plain');
             }
 
             const {
-                name, 
+                name,
+                isValid, 
                 spaces, 
                 path, 
                 height, 
@@ -41,6 +42,7 @@ const Plain = require('../models/Plain');
             
             const plain = await Plain.create({
                 name,
+                isValid,
                 spaces, 
                 path, 
                 height, 
@@ -77,6 +79,7 @@ const Plain = require('../models/Plain');
             const {
                 _id, 
                 name,
+                isValid,
                 spaces, 
                 path, 
                 height, 
@@ -91,19 +94,20 @@ const Plain = require('../models/Plain');
             } = req.body
 
             const plain = await Plain.findById(_id)
-
-            if(name)        plain.name=name
-            if(spaces)      plain.spaces=spaces
-            if(path)        plain.path=path
-            if(height)      plain.height=height
-            if(width)       plain.width=width
-            if(height_px)   plain.height_px=height_px 
-            if(width_px)    plain.width_px=width_px 
-            if(imgHeight_px)plain.imgHeight_px=imgHeight_px 
-            if(imgWidth_px) plain.imgWidth_px=imgWidth_px
-            if(imgX_px)     plain.imgX_px=imgX_px 
-            if(imgY_px)     plain.imgY_px=imgY_px
-            if(svg)         plain.svg=svg
+            
+            if(name)                        plain.name=name
+            if(isValid!==undefined)         plain.isValid=isValid
+            if(spaces)                      plain.spaces=spaces
+            if(path)                        plain.path=path
+            if(height)                      plain.height=height
+            if(width)                       plain.width=width
+            if(height_px)                   plain.height_px=height_px 
+            if(width_px)                    plain.width_px=width_px 
+            if(imgHeight_px)                plain.imgHeight_px=imgHeight_px 
+            if(imgWidth_px)                 plain.imgWidth_px=imgWidth_px
+            if(imgX_px)                     plain.imgX_px=imgX_px 
+            if(imgY_px)                     plain.imgY_px=imgY_px
+            if(svg)                         plain.svg=svg
 
             await plain.save()
             res.json(plain)

@@ -7,6 +7,9 @@ let PlainSchema = new Schema({
         required: true,
         unique: true
     },
+    isValid: {
+        type: Boolean, 
+    },
     path: {
         type: String, 
         required: true
