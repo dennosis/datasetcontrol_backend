@@ -4,10 +4,26 @@ const Plain = require('../models/Plain');
 
     const index = async (req, res) => {
         try {
-            if(req.query){
-                res.json(await Plain.find({...req.query}).select({ "name": 1, "_id": 1}))
+            const {show} = req.query
+
+            if(show==='true'){
+                const fields = {
+                    _id: 1,
+                    name: 1, 
+                    height: 1,
+                    width: 1,
+                    height_px: 1,
+                    width_px: 1,
+                    "spaces.name":1,
+                    "spaces.horizontally":1,
+                    "spaces.vertically":1,
+                    "spaces.area":1,
+                    "spaces.width":1,
+                    "spaces.height":1,
+                }
+                res.json(await Plain.find().select(fields))
             }else{
-                res.json(await Plain.find().select({ "name": 1, "_id": 1}))
+                res.json(await Plain.find().select({ name: 1, _id: 1}))
             }
         } catch (error) {
             console.log(error)
