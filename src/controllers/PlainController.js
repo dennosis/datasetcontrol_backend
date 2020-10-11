@@ -14,6 +14,7 @@ const Plain = require('../models/Plain');
                     width: 1,
                     height_px: 1,
                     width_px: 1,
+                    isValid:1,
                     "spaces.name":1,
                     "spaces.horizontally":1,
                     "spaces.vertically":1,
