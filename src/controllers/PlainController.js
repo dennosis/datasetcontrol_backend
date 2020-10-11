@@ -4,10 +4,21 @@ const Plain = require('../models/Plain');
 
     const index = async (req, res) => {
         try {
-            const {show} = req.query
+            const {show, isValid} = req.query
+
+            let findPlain={}
+            let fields={}
+
+            if(isValid==='true'){
+                findPlain={
+                    isValid:true,
+                    $where: "this.spaces.length > 0",
+                    "spaces.name": { $not: { $lte: "undefined" } }
+                }
+            }
 
             if(show==='true'){
-                const fields = {
+                fields = {
                     _id: 1,
                     name: 1, 
                     height: 1,
@@ -22,10 +33,12 @@ const Plain = require('../models/Plain');
                     "spaces.width":1,
                     "spaces.height":1,
                 }
-                res.json(await Plain.find().select(fields))
             }else{
-                res.json(await Plain.find().select({ name: 1, _id: 1}))
+                fields = { name: 1, _id: 1}
             }
+
+            res.json(await Plain.find(findPlain).select(fields))
+
         } catch (error) {
             console.log(error)
             res.status(500).json({message: "Error find Plains", error: error});
