@@ -12,9 +12,8 @@ const Plain = require('../models/Plain');
             if(isValid==='true'){
                 findPlain={
                     isValid:true,
-                    //'spaces.1': { $exists: true },
-                    //$where: "this.spaces.length > 0",
-                    'spaces.name': { $not: { $lte: "undefined" } }
+                    $expr: { $gt: [ { $size: "$spaces"}, 0 ] },
+                    'spaces': { $not: { $elemMatch: { name: 'undefined' } } }    
                 }
             }
 
