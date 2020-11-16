@@ -32,6 +32,8 @@ const Plain = require('../models/Plain');
                     "spaces.area":1,
                     "spaces.width":1,
                     "spaces.height":1,
+                    "spaces.rcx":1,
+                    "spaces.rcy":1,
                 }
             }else{
                 fields = { name: 1, _id: 1}
